@@ -10,9 +10,22 @@
 		63E5CB1A2D4F716C0042679D /* WeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		63E5CB802D4FD9980042679D /* Exceptions for "WeApp" folder in "WeApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 63E5CB192D4F716C0042679D /* WeApp */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		63E5CB1C2D4F716C0042679D /* WeApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				63E5CB802D4FD9980042679D /* Exceptions for "WeApp" folder in "WeApp" target */,
+			);
 			path = WeApp;
 			sourceTree = "<group>";
 		};
@@ -255,7 +268,10 @@
 				DEVELOPMENT_TEAM = WKNB7CAJN8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WeApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Погодка";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Мы используем вашу геолокацию для определения местоположения";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Мы используем вашу геолокацию для определения местоположения";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -285,7 +301,10 @@
 				DEVELOPMENT_TEAM = WKNB7CAJN8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WeApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Погодка";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Мы используем вашу геолокацию для определения местоположения";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Мы используем вашу геолокацию для определения местоположения";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

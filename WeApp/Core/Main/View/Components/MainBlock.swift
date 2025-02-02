@@ -45,6 +45,7 @@ struct MainBlock: View {
                         }
                     }
                     .padding()
+                    .shadow(color: Color(.gray),radius: 4, x: 0, y: 0)
         }
     }
 }

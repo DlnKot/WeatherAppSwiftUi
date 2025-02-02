@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct MainView: View {
+    
+    private var mainViewModel = MainViewModel()
+    
     var body: some View {
         VStack {
             Tabbar()
             MainBlock()
+            ProgresBlock()
             Spacer()
         }
         .background(Color("BackgroundColor"))
