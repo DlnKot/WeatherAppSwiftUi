@@ -1,35 +1,46 @@
-//
-//  WeatherManager.swift
-//  WeApp
-//
-//  Created by Даниил Липленко on 02.02.2025.
-//
-
 import Foundation
 
 final class WeatherManager {
     
-    private var locationManager = LocationManager()
-    private var url = URLComponents()
+    static let shared = WeatherManager()
     
+    private init() {} // Закрываем инициализацию, чтобы не создавать экземпляры извне
     
-    func fetchWeather() {
-        guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String else { return }
+    func fetchCurrentWeather(completion: @escaping (WeatherModel?) -> Void) {
+        var url = URLComponents()
         url.scheme = "https"
         url.host = "api.openweathermap.org"
         url.path = "/data/2.5/weather"
         url.queryItems = [
-            URLQueryItem(name: "lat", value: locationManager.latitude.description),
-            URLQueryItem(name: "lon", value: locationManager.longitude.description),
-            URLQueryItem(name: "appid", value: "b1a37ce1ca53f4f82319634615c40bb4")
+            URLQueryItem(name: "q", value: "Moscow"),
+            URLQueryItem(name: "appid", value: "b1a37ce1ca53f4f82319634615c40bb4"),
+            URLQueryItem(name: "units", value: "metric") // Чтобы температура была в °C
         ]
         
-        guard let url = url.url else { return }
+        guard let url = url.url else {
+            completion(nil)
+            return
+        }
         
-        URLSession.shared.dataTask(with: url) { data, _, _ in
-            guard let data = data else { return }
-            print(String(data: data, encoding: .utf8) ?? "No data")
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error = error {
+                print("Error:", error.localizedDescription)
+                completion(nil)
+                return
+            }
+            
+            guard let data = data else {
+                completion(nil)
+                return
+            }
+            
+            do {
+                let weather = try JSONDecoder().decode(WeatherModel.self, from: data)
+                completion(weather)
+            } catch {
+                print("Decoding error:", error)
+                completion(nil)
+            }
         }.resume()
     }
-    
 }

@@ -8,14 +8,18 @@
 import SwiftUI
 
 struct MainBlock: View {
+    
+    @State var currentSity: String
+    @State var currentWeather: Double
+    
     var body: some View {
         VStack {
-            Text("Москва")
+            Text(currentSity)
                 .padding(16)
                 .font(.title)
                 .fontWeight(.medium)
             
-            Text("23°C")
+            Text("\(String(format: "%.1f", currentWeather))°C")
                 .padding(16)
                 .font(.largeTitle)
                 .fontWeight(.thin)
@@ -51,5 +55,5 @@ struct MainBlock: View {
 }
 
 #Preview {
-    MainBlock()
+    MainBlock(currentSity: "Moscow", currentWeather: 24)
 }

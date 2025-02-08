@@ -8,20 +8,31 @@
 import SwiftUI
 
 struct MainView: View {
-    
-    private var mainViewModel = MainViewModel()
+    @StateObject private var viewModel = MainViewModel()
     
     var body: some View {
         VStack {
             Tabbar()
-            MainBlock()
+            
+            if let weather = viewModel.currentWeather {
+                MainBlock(
+                    currentSity: weather.name,
+                    currentWeather: weather.main.temp
+                )
+            } else {
+                Text("Loading...")
+                    .font(.headline)
+                    .foregroundColor(.gray)
+            }
+            
             ProgresBlock()
             Spacer()
         }
         .background(Color("BackgroundColor"))
-        
+        .onAppear {
+            viewModel.loadWeather()
+        }
     }
-    
 }
 
 #Preview {

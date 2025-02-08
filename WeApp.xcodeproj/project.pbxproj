@@ -14,7 +14,7 @@
 		63E5CB802D4FD9980042679D /* Exceptions for "WeApp" folder in "WeApp" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				Resources/Info.plist,
 			);
 			target = 63E5CB192D4F716C0042679D /* WeApp */;
 		};
@@ -268,7 +268,7 @@
 				DEVELOPMENT_TEAM = WKNB7CAJN8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WeApp/Info.plist;
+				INFOPLIST_FILE = WeApp/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Погодка";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Мы используем вашу геолокацию для определения местоположения";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Мы используем вашу геолокацию для определения местоположения";
@@ -301,7 +301,7 @@
 				DEVELOPMENT_TEAM = WKNB7CAJN8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WeApp/Info.plist;
+				INFOPLIST_FILE = WeApp/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Погодка";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Мы используем вашу геолокацию для определения местоположения";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Мы используем вашу геолокацию для определения местоположения";

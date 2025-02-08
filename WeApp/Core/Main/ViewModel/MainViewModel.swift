@@ -9,12 +9,16 @@ import Foundation
 
 class MainViewModel: NSObject, ObservableObject {
     
-    private let weatherManager = WeatherManager()
+    @Published var currentWeather: WeatherModel?
     
-    override init() {
-        super.init()
-        weatherManager.fetchWeather()
+    func loadWeather() {
+        WeatherManager.shared.fetchCurrentWeather { [weak self] weather in
+            DispatchQueue.main.async {
+                self?.currentWeather = weather
+            }
+        }
+        
+        
     }
-    
     
 }
