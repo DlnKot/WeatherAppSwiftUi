@@ -9,12 +9,12 @@ import SwiftUI
 
 struct MainBlock: View {
     
-    @State var currentSity: String
+    @State var selectedCity: String
     @State var currentWeather: Double
     
     var body: some View {
         VStack {
-            Text(currentSity)
+            Text(selectedCity)
                 .padding(16)
                 .font(.title)
                 .fontWeight(.medium)
@@ -54,6 +54,4 @@ struct MainBlock: View {
     }
 }
 
-#Preview {
-    MainBlock(currentSity: "Moscow", currentWeather: 24)
-}
+

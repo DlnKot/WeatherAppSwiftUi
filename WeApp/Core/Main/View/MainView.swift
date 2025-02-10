@@ -6,35 +6,43 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct MainView: View {
+    
+    var latitude: String
+    var longitude: String
+    
     @StateObject private var viewModel = MainViewModel()
+    @State private var selectedCity: String = "Москва" 
     
     var body: some View {
-        VStack {
-            Tabbar()
-            
-            if let weather = viewModel.currentWeather {
-                MainBlock(
-                    currentSity: weather.name,
-                    currentWeather: weather.main.temp
-                )
-            } else {
-                Text("Loading...")
-                    .font(.headline)
-                    .foregroundColor(.gray)
-            }
-            
-            ProgresBlock()
-            Spacer()
-        }
-        .background(Color("BackgroundColor"))
-        .onAppear {
-            viewModel.loadWeather()
-        }
+                VStack {
+                    Tabbar(selectedCity: $selectedCity)
+                    
+                    if let weather = viewModel.coordWeather {
+                        MainBlock(
+                            selectedCity: weather.name,
+                            currentWeather: weather.main.temp
+                        )
+                    } else {
+                        Text("Loading...")
+                            .font(.headline)
+                            .foregroundColor(.gray)
+                    }
+                    
+                    ProgresBlock()
+                    Spacer()
+                }
+                .background(Color("BackgroundColor"))
+                .onAppear {
+                    viewModel.loadCoordWeather(latitude: latitude, longitude: longitude)
+//                    selectedCity = viewModel.coordWeather?.name ?? "Moscow"
+                }
+//                .onChange(of: selectedCity) { newCity in
+//                    viewModel.loadWeather(sity: newCity)
+//                }
     }
 }
 
-#Preview {
-    MainView()
-}
+

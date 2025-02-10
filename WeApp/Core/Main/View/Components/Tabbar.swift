@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct Tabbar: View {
+    
+    @State private var isShowingSearch = false
+    @Binding var selectedCity: String
+    
     var body: some View {
         HStack{
             Button(action: {
@@ -22,7 +26,7 @@ struct Tabbar: View {
             Spacer()
             
             Button(action: {
-                
+                isShowingSearch.toggle()
             }) {
                 Image(systemName: "magnifyingglass")
                     .foregroundStyle(Color("MainTintColor"))
@@ -32,9 +36,11 @@ struct Tabbar: View {
             
         }
         .padding(.bottom, 32)
+        .sheet(isPresented: $isShowingSearch) {
+            SearchCityView(selectedCity: $selectedCity)
+            
+        }
     }
 }
 
-#Preview {
-    Tabbar()
-}
+

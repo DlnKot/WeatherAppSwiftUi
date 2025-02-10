@@ -4,5 +4,14 @@
 <dict>
 	<key>API_KEY</key>
 	<string>$(API_KEY)</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Мы используем вашу геопозицию для отображения погоды</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Мы используем вашу геопозицию для отображения погоды</string>
+	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
+	<dict>
+		<key>Weather</key>
+		<string>Используется для определения погоды в вашем регионе</string>
+	</dict>
 </dict>
 </plist>

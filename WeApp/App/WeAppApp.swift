@@ -11,7 +11,7 @@ import SwiftUI
 struct WeAppApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView()
+            WelcomeView()
         }
     }
 }
