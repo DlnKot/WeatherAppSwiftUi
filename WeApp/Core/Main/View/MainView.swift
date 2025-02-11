@@ -22,8 +22,8 @@ struct MainView: View {
                     
                     if let weather = viewModel.coordWeather {
                         MainBlock(
-                            selectedCity: weather.name,
-                            currentWeather: weather.main.temp
+                            selectedCity: weather.address,
+                            currentWeather: weather.days[0].temp
                         )
                     } else {
                         Text("Loading...")
