@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 class MainViewModel: NSObject, ObservableObject {
     
@@ -13,22 +14,26 @@ class MainViewModel: NSObject, ObservableObject {
     @Published var currentWeather: WeatherModel?
     @Published var coordWeather: WeatherModel?
     
-//    private let locationManager = LocationManager()
     
-    func loadWeather(sity: String) {
-        WeatherManager.shared.fetchSityWeather(sity: sity) { [weak self] weather in
+    func loadWeather(city: String) {
+        WeatherManager.shared.fetchCityWeather(city: city) { [weak self] weather in
             DispatchQueue.main.async {
-                self?.currentWeather = weather
+                self?.coordWeather = weather
             }
         }
     }
     
-    func loadCoordWeather(latitude: String, longitude: String) {
+    func loadCoordWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         WeatherManager.shared.fetchCoordWeather(latitude: latitude, longitude: longitude) { [weak self] weather in
-                DispatchQueue.main.async {
-                    self?.coordWeather = weather
+            DispatchQueue.main.async {
+                self?.coordWeather = weather
             }
         }
     }
     
 }
+    
+    
+    
+    
+    

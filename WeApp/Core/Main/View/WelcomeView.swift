@@ -14,7 +14,7 @@ struct WelcomeView: View {
         var body: some View {
             Group {
                 if let location = locationManager.location {
-                    MainView(latitude: location.latitude.description, longitude: location.longitude.description)
+                    MainView(latitude: location.latitude, longitude: location.longitude)
                 } else {
                     ProgressView("Определяем местоположение...")
                         .onAppear {

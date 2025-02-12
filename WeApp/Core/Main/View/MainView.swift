@@ -10,38 +10,36 @@ import CoreLocation
 
 struct MainView: View {
     
-    var latitude: String
-    var longitude: String
+    var latitude: CLLocationDegrees
+    var longitude: CLLocationDegrees
     
     @StateObject private var viewModel = MainViewModel()
-    @State private var selectedCity: String = "Москва" 
+    @State private var selectedCity: String
     
     var body: some View {
-                VStack {
-                    Tabbar(selectedCity: $selectedCity)
-                    
-                    if let weather = viewModel.coordWeather {
-                        MainBlock(
-                            selectedCity: weather.address,
-                            currentWeather: weather.days[0].temp
-                        )
-                    } else {
-                        Text("Loading...")
-                            .font(.headline)
-                            .foregroundColor(.gray)
-                    }
-                    
-                    ProgresBlock()
-                    Spacer()
-                }
-                .background(Color("BackgroundColor"))
-                .onAppear {
-                    viewModel.loadCoordWeather(latitude: latitude, longitude: longitude)
-//                    selectedCity = viewModel.coordWeather?.name ?? "Moscow"
-                }
-//                .onChange(of: selectedCity) { newCity in
-//                    viewModel.loadWeather(sity: newCity)
-//                }
+        VStack {
+            Tabbar(selectedCity: $selectedCity)
+            
+            if let weather = viewModel.coordWeather {
+                MainBlock(weather: weather)
+                ProgresBlock(weather: weather)
+                
+            } else {
+                Text("Loading...")
+                    .font(.headline)
+                    .foregroundColor(.gray)
+            }
+            
+            
+            Spacer()
+        }
+        .background(Color("BackgroundColor"))
+        .onAppear {
+            viewModel.loadCoordWeather(latitude: latitude, longitude: longitude)
+        }
+        .onChange(of: selectedCity) { newCity in
+            viewModel.loadWeather(city: selectedCity)
+        }
     }
 }
 
